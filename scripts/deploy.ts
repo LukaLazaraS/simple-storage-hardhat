@@ -1,8 +1,9 @@
 import { ethers, run, network } from "hardhat";
+import { SimpleStorage, SimpleStorage__factory } from "../typechain-types";
 
 async function main() {
-  const SimpleStorageFactory = await ethers.getContractFactory("SimpleStorage");
-  const SimpleStorage = await SimpleStorageFactory.deploy();
+  const SimpleStorageFactory: SimpleStorage__factory = await ethers.getContractFactory("SimpleStorage");
+  const SimpleStorage: SimpleStorage = await SimpleStorageFactory.deploy();
   await SimpleStorage.deployed();
   console.log(`Contract deploed to + ${SimpleStorage.address}`);
 
@@ -19,12 +20,12 @@ async function verify(contractAddress: string, args: any[]) {
       address: contractAddress,
       constuctorArguments: args,
     });
-  } catch (e: any) {
+  } catch (e: unknown) {
     console.log(e);
   }
 }
 
-main().catch((error) => {
+main().catch((error: unknown) => {
   console.error(error);
   process.exitCode = 1;
 });
