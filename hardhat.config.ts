@@ -3,10 +3,12 @@ import "@nomicfoundation/hardhat-toolbox";
 import "dotenv/config";
 import "@nomiclabs/hardhat-etherscan";
 import "./tasks/block-number";
+import "hardhat-gas-reporter";
 
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL!;
 const PRIVATE_KEY = process.env.PRIVATE_KEY!;
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY!;
+const COIN_MARKET_CAP_API_KEY = process.env.COIN_MARKET_CAP_API_KEY!;
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
@@ -24,6 +26,14 @@ const config: HardhatUserConfig = {
   solidity: "0.8.18",
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,
+  },
+  gasReporter: {
+    enabled: true,
+    noColors: true,
+    outputFile: "gas-report.txt",
+    currency: "USD",
+    coinmarketcap: COIN_MARKET_CAP_API_KEY,
+    token: "ETH",
   },
 };
 
