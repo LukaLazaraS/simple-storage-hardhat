@@ -1,3 +1,7 @@
+first touch to hardhat.
+
+this is sample hardhat project from Patrick Collins & freecodecamp's coure.
+
 # Sample Hardhat Project
 
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
